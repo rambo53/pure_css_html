@@ -1,0 +1,384 @@
+/*GENERAL*/
+
+*{
+    box-sizing: border-box;
+
+}
+
+html{
+    font-size: 18px;
+    width: 100vw;
+}
+body{
+    margin: 0 auto;
+    height: 100%;
+    /*overflow-y: scroll; */
+}
+
+/*me permet de cacher la barre de scroll et de pouvoir scroller quand même
+  fonctionne sur Chrome, Safari and Opera*/
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* pareil, première ligne pour IE et edge
+   deuxieme ligne pour firefox*/
+
+/*body {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+  }*/
+
+input{
+    display: none;
+}
+
+span{
+    display: none;
+}
+
+a{
+    transition: background-color 300ms, transform 300ms, filter 300ms;
+    text-decoration: none;
+    color: brown;
+}
+
+.container{
+    width: 90vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page{
+   min-height: 100vh;
+}
+
+/*FIN GENERAL*/
+
+/*NAVBAR*/
+
+.navbar{
+    width: 100vw;
+    height: 10vh;
+    background-color: aqua;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+nav div{
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+nav h1{
+    margin: auto 2em;    
+}
+
+nav ul{
+    display: flex;
+    margin: 0 5vw;
+    overflow: hidden;   
+}
+
+nav ul li{
+    display: flex;
+    border: 1px solid black;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+nav ul li a{
+    line-height: 10vh;
+    padding: 0 1em;
+}
+
+nav ul li a:hover{
+    background-color: aqua;
+    filter: brightness(90%);
+    /* les deux sont possible mais le scale occasionne du flou lors
+    de la transition
+    font size lui, donne un effet lors de l'ouverture de la page*/
+    transform: scale(1.2);
+    /*font-size: 1.5em;*/
+    transition: background-color 300ms, transform 300ms, filter 300ms;
+}
+
+/* Pour signaler à l'utilisateur la page sur laquelle je suis dans 
+    la navbar*/
+.nav_accueil{
+    background-color: aqua;
+    filter: brightness(90%);
+    transform: scale(1.2);
+}
+
+/*FIN NAVBAR*/
+
+/*HEADER*/
+
+header{
+    width:95vw;
+    margin: 12vh auto 0vh auto;
+    background-color: aqua;
+    border: 0px solid;
+    border-radius: 0.6em;
+}
+
+header h2{
+    text-align: center;
+}
+
+header p{
+    text-align: center;
+}
+
+/*FIN HEADER*/
+
+/*MAIN*/
+
+main{
+    background-image: url("/tp_1/images/jcvd_wallpaper.jpg");  
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue; 
+    border-radius: 1em;
+}
+
+h3{
+    width: 20vw;
+    margin-left: 12vw;
+    padding-top: 3vh;
+    text-align: center;
+    margin-bottom: 2vh;
+    color: aliceblue;
+}
+
+.paraCentre{
+    width: 30vw;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 5vh 0vw 0vw 8vw;
+    padding: 1em;
+}
+main .paraCentre p{
+    padding: 0.5em;
+}
+
+/*FIN MAIN*/
+
+/*ASIDE*/
+
+aside {
+    width: 10vw;
+    background-color: aqua;
+    border-radius: 1em 0 0 1em;
+    position: fixed;
+    padding-left: 0.5em;
+    top: 50vh;
+    right: 0;
+}
+
+/*FIN ASIDE*/
+
+/*FOOTER*/
+
+footer{
+    width: 100vw;
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    font-size: 0.8em;
+    /*si mon container n'est pas assez grand pour placer mon footer en bas
+    ou avec position fixed*/
+    /*position: absolute;*/
+    bottom: 0vh;
+    padding: 2px 0;
+}
+
+footer p{
+    padding-left: 1em;
+}
+
+footer ul{
+    display: flex;
+}
+
+footer ul li{
+    display: flex;
+    margin-right: 2em;
+}
+
+/*FIN FOOTER*/
+
+/*Media queries*/
+
+@media all and (max-width:1300px){
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .paraCentre{
+        width: 50vw;
+        margin: 0;  
+    }
+
+    h3{
+        margin: 0;
+    }
+
+    aside{
+        display: none;
+    }
+
+}
+
+@media all and (max-width:890px){
+
+ .navbar{
+     height: 40vh;
+     width: 28vw;
+     background: transparent;
+ }
+
+ nav img{
+     display: none;
+ }
+ 
+ nav div{
+   display: block;
+   position: relative;
+   top: 10px;
+   left: 20px;
+   z-index: 1;
+   /*l'utilisateur ne peut pas sélectionner ou copier/coller ce qui est affiché*/
+   -webkit-user-select: none;
+   user-select: none;
+ }
+ 
+ /*superpose une checkbox sur mon burger*/
+ input{
+   display: block;
+   width: 40px;
+   height: 32px;
+   position: absolute;
+   top: -7px;
+   left: -5px;
+   cursor: pointer;
+   
+   opacity:0; /* hide this */
+   z-index: 2; /* and place it over the hamburger */
+   /*n'affiche rien si curseur reste dessus ou reste enfoncé*/
+   -webkit-touch-callout: none;
+ }
+ 
+ span{
+   display: block;
+   width: 33px;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+   background-color: aqua;
+   border-radius: 3px;
+   z-index: 1;
+   
+   transform-origin: 4px 0px;
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               /*background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),*/
+               opacity 0.55s ease;
+ }
+ 
+ span:first-child
+ {
+   transform-origin: 0% 0%;
+ }
+ 
+ span:nth-last-child(2)
+ {
+   transform-origin: 0% 100%;
+ }
+ 
+ /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  * :checked me permet d'afficher des infos si mon bouton checkbox
+  * ou radio est coché ou non
+  */
+ input:checked ~ span{
+   opacity: 1;
+   transform: rotate(45deg) translate(0px, -1px);
+   background: #232323;
+ }
+ 
+ /*
+  * But let's hide the middle one.
+  * nth last child me permet de sélectionner le troisiéme élément en partant de 
+  * mon dernier élément dans mon bloc, ici ul = 1, span du bas = 2, span du
+  * milieu = 3
+  */
+ input:checked ~ span:nth-last-child(5){
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+ }
+ 
+ /*
+  * Ohyeah and the last one should go the other direction
+  */
+ input:checked ~ span:nth-last-child(4){
+   transform: rotate(-45deg) translate(0, -1px);
+ }
+ 
+ /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+.navbar .burger_items{
+   position: absolute;
+   top: 160px;
+   left: 65px;
+   display: flex;
+   flex-direction: column;
+   width: 150px;
+   margin: -100px 0 0 -50px;
+   padding: 0px;
+   
+   /*background: #ededed;*/
+   list-style-type: none;
+   -webkit-font-smoothing: antialiased;
+   /* to stop flickering of text in safari */
+   
+   transform-origin: 0% 0%;
+   transform: translate(-125%, 0);
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+ }
+ 
+ nav ul li {
+    display: flex;
+    justify-content: center;
+    padding: 0 0;
+    font-size: 1em;
+ }
+
+ nav ul li a{
+    line-height: 5vh;
+    padding: 0 3em;
+}
+ 
+ /*
+  * And let's slide it in from the left
+  */
+ #check:checked ~ .burger_items
+ {
+   transform: none;
+ }
+
+}
+
+/*fin media queries*/
